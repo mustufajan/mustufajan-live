@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{% static 'MustufaJan/favicon.ico' %}" rel="icon">
+
+        <title>{% block title %}Mustufa Jan{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'MustufaJan/styles.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="{% static 'MustufaJan/MJ.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/6b1ae592b4.js" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light primary-navigation">
+            <a class="navbar-brand" href="index.html"><span style="font-size: xx-large; color: #17a2b8;">Mustufa Jan.</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link"id="career_nav">Journey</a></li>
+                        <li class="nav-item"><a class="nav-link" id="education_nav">Learning</a></li>
+                        <li class="nav-item"><a class="nav-link" id="projects_nav">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" id="skills_nav">Abilities</a></li> 
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        
+                        <!--<li class="nav-item"><a class="nav-link" id="contact_nav">Contact</a></li>-->
+                        <li class="nav-item"><a style="color:#17a2b8;" href="{% static 'MustufaJan/SW_Resume_MustufaJan.pdf'%}" target="_blank" class="nav-link" id="resume">
+                            <button type="button" style="border-color:#17a2b8; color: #17a2b8;" class="btn btn-outline-primary btn-sm resume">Resume</button></a></li>
+                        <li class="nav-item"><a target="_blank" class="nav-link" href="https://www.linkedin.com/in/mustufajan"><img src="static/MustufaJan/logos/linkedin_logo.jpg" alt="LinkedIn"></a></li>
+                        <li class="nav-item"><a class="nav-link" target="_blank" href="https://github.com/mustufajan"><img src="static/MustufaJan/logos/git_logo.jpeg" alt="GitHub"></a></li>
+                    </ul>
+            </div>
+        </nav>
+
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+    <footer class="small text-center text-muted">
+        <br><br>
+        <span>
+            <a style="display: inline;" target="_blank" href="https://www.linkedin.com/in/mustufajan"><img src="static/MustufaJan/logos/linkedin_logo.jpg" alt="LinkedIn"></a>
+            &nbsp;
+            <a style="display: inline;" target="_blank" href="https://github.com/mustufajan"><img src="static/MustufaJan/logos/git_logo.jpeg" alt="GitHub"></a>
+        </span>
+        <br>
+        Made by MJ
+        {% block footer %}
+        {% endblock %}
+    </footer>
+</html>
+

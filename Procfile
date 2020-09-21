@@ -1,0 +1,1 @@
+web: gunicorn CSW50_Capstone.wsgi --log-file -

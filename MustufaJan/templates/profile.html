@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+
+{% block body%}
+
+<br>
+<div id="page-content" class="container">
+
+    <br><br><br>
+    <div id="profile" class="container" style="background-color:rgb(241, 246, 252);">
+        
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                
+                <img src="/static/MustufaJan/profile_pic.jpg" alt="Mustufa Jan">
+            </div>
+            <div class="col-md-8">
+                <h2>Hey! I am Mustufa Jan</h2>
+                <p>{{profile.headline | safe}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="arrow_down">
+        <i class="fa fa-chevron-down"></i>
+    </div>
+
+    <div id="highlights">
+        <br><br>
+        <div id="career" >
+            <h3 style="text-align: center;"> <strong>My journey</strong></h3>
+            <div class="container" style="background-color:rgb(241, 246, 252);">
+                {% for highlight in highlights %}
+                    {% if highlight.category == 'Work' %}
+                    <div class="row" style="padding:10px;">
+                        <div class="col-sm-4 text-center imageOverlay">
+                            <img class="point_logo" src='{{highlight.logo_path}}' alt="Mustufa Jan">
+                        </div>
+                        <div class="col-md-8">
+                            <h3>{{highlight.institution}}</h3>
+                            <h4><strong>{{highlight.position}}, <p style=" display:inline; font-size: small;">({{highlight.start_date}} – {{highlight.end_date}})</p></strong></h4>
+                            <h6>{{highlight.location}}</h6>
+                            <p>{{highlight.description | safe}}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <br><br>
+        </div>
+        
+        <div id="education">
+            <h3 style="text-align: center;"> <strong>What I have learned so far</strong></h3>
+    
+            <div class="container" style=" padding:10px; background-color:rgb(241, 246, 252);">
+                <div class="row" style="padding:10px;">
+                    {% for highlight in highlights %}
+                        {% if highlight.category == 'Education' %}
+                            <div class="col-sm-4 text-center imageOverlay" >
+                                <img class="point_logo" src={{highlight.logo_path}} style="padding: 10px;" alt="Mustufa Jan">
+                                <div class="overlay">
+                                    <div class="text"><strong>{{highlight.description}}</strong></div>
+                                </div>
+                                <h4><strong>{{highlight.position}}</strong></h4>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        
+            <br><br>
+        </div>
+
+        <div id="projects">
+            <h3 style="text-align: center;"><strong>Some of my creations I want to share</strong></h3>
+    
+            <div class="container" style=" padding:10px; background-color:rgb(241, 246, 252);">
+                <div class="row" style="padding:10px;">
+                    {% for project in projects %}
+                            <div class="col-sm-4 text-center imageOverlay">
+                                <img class="point_logo" src={{project.logo_path}} alt="Mustufa Jan">
+                                <div class="overlay">
+                                    <div class="text">
+                                        <strong>{{project.description}}</strong><br><br>
+                                        <strong>{{project.tech_stack}}</strong><br><br>
+                                    </div>
+                                </div>
+                                <br>
+                                <a href="" data-toggle="modal" data-target="#project_video_{{project.id}}"><img class="preview_link" src="static/MustufaJan/logos/youtube_logo.png" alt="Preview"></a>
+                                {% if project.git_link %}
+                                    &nbsp|&nbsp<a href={{project.git_link}} target="_blank"><img class="git_link" src="static/MustufaJan/logos/git_logo.jpeg" alt="Git"></a>
+                                {% endif %}
+                                <!--&nbsp|&nbsp<a href={{project.launch_link}} target="_blank"><i style=" position:relative; top: 9px;" class="material-icons">launch</i></a>-->
+                                <h4><strong>{{project.heading}}</strong></h4>
+                            </div>
+
+                            <!-- Modal -->
+                            <div id="project_video_{{project.id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-body" style="text-align: center;">
+                                            <!--<video width="100%" controls loop>
+                                                <source src={{project.preview}} type="video/mp4">
+                                                    Your browser does not support HTML video.
+                                            </video> -->
+                                            <iframe width="560" height="315" src={{project.preview}} frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <div class="video_text">
+                                                <h3>{{project.heading}}</h3>
+                                                <p>{{project.description}}</p>
+                                                <h4>Key features:</h4>
+                                                <ul>
+                                                    {% for feature in project.features.all %}
+                                                        <li style="margin-bottom:10px;"><strong>{{feature.name}}: </strong>{{feature.description}}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {% endfor %}
+                </div>
+                <span style="text-align: center;">
+                    <p style="font-size: small;">This project utilizes Django, JavaScript, CSS, HTML</p>
+                    <a id="see_project" href="" target="_blank"><button class="btn btn-info btn-sm btn-center">See project on GitHub</button></a>
+                </span>
+            </div>
+            <br><br>
+        </div>
+
+        <div id="skills" >
+            <h3 style="text-align: center;"> <strong>Stuff I know</strong></h3>
+            <div class="container" style="background-color:rgb(241, 246, 252);">
+                <div class="row">
+                    {% for skill in skills %}
+                        <div class="col-sm-6">
+                            <div class="row skill_row" id="skill_{{skill.id}}">
+                                <div class="col-sm-6">
+                                    <h4>{{skill.name}}</h4>
+                                </div>
+                                <div class="col-sm-2 skill_stars">
+                                    <div class="stars-outer">
+                                        <div class="stars-inner"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div> 
+            </div>
+        </div> 
+
+        <br><br>
+
+        <div id="contact" class="container" >
+            <div>
+                <h3 style="text-align: center;"> <strong>Let's connect on <a target="_blank" href="https://www.linkedin.com/in/mustufajan/">LinkedIn</a>. 
+                    I am approachable and never shy away from an interesting conversation with a stranger.</strong></h3>
+                    <br>
+                <span style="margin-left: auto;
+                margin-right: auto;">
+                    <a target="_blank" href="https://www.linkedin.com/in/mustufajan/"><img id="linkedin_logo" src="/static/MustufaJan/logos/linkedin_logo.jpg" alt="Mustufa Jan LinkedIn"></a>
+                </span>
+            </div>
+            <br><br><br>
+        </div> 
+
+    </div>
+</div>
+
+{% endblock %}
+
