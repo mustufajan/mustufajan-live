@@ -294,3 +294,19 @@ footer img:hover{
     transform: scale(1.2);
 
 }
+
+.project_video{
+    display: none;
+}
+.link_sep{
+    display: none;
+}
+
+@media (min-width: 760px) {
+    .project_video{
+        display: inline-block;
+    }
+    .link_sep{
+        display: inline-block;
+    }
+}

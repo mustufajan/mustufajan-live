@@ -85,9 +85,11 @@
                                     </div>
                                 </div>
                                 <br>
-                                <a href="" data-toggle="modal" data-target="#project_video_{{project.id}}"><img class="preview_link" src="static/MustufaJan/logos/youtube_logo.png" alt="Preview"></a>
+                                <a class="project_video" href="" data-toggle="modal" data-target="#project_video_{{project.id}}"><img class="preview_link" src="static/MustufaJan/logos/youtube_logo.png" alt="Preview"></a>
+                
                                 {% if project.git_link %}
-                                    &nbsp|&nbsp<a href={{project.git_link}} target="_blank"><img class="git_link" src="static/MustufaJan/logos/git_logo.jpeg" alt="Git"></a>
+                                    <span class="link_sep">&nbsp|&nbsp</span>
+                                    <a href={{project.git_link}} target="_blank"><img class="git_link" src="static/MustufaJan/logos/git_logo.jpeg" alt="Git"></a>
                                 {% endif %}
                                 <!--&nbsp|&nbsp<a href={{project.launch_link}} target="_blank"><i style=" position:relative; top: 9px;" class="material-icons">launch</i></a>-->
                                 <h4><strong>{{project.heading}}</strong></h4>
